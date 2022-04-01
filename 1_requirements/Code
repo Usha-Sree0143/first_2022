@@ -1,1 +1,108 @@
 
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<stdlib.h>
+static int counter=1;
+int logn=1234;
+int pswd=4567;
+void login();
+void header();
+void header()
+{
+printf("\n\t\t\t\t              Smiley Technologies \n");
+printf("\t\t\t========************-------------------------************========\n");
+}
+void login()
+{
+int lognn,passwd;
+repeat:
+if(counter>3)
+{
+header();
+printf("\t\t\tlogin failure : you have attempted more than 3 times\n");
+printf("\t\t\t\tyou cannot login ___next time better luck\n");
+getch();
+exit(0);
+}
+else
+{
+printf("\t\t\tlogin ID : ");
+scanf("%d",&lognn);
+printf("\t\t\tpassword : ");
+scanf("%d",&passwd);
+if((logn!=lognn)||(pswd!=passwd))
+{
+printf("\t\t\tlogin failure : login Id or password are not matching \n");
+printf("\t\t\t\t\tTry once again \n");
+getch();
+counter++;
+goto repeat;
+}
+else
+{
+printf("\n\t\t\t      ***--Now you have successfully loggedin--***\n");
+getch();
+}
+}
+}
+struct employee
+{
+int ID,hour;
+char date[10],month[20];
+double v,salary,Tax;
+};
+void main()
+{
+header();
+login();
+struct employee emp[100];
+int n;
+printf("\n\t\t\t No of Employees details: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++){
+printf("\n\t\t\t Date : ");
+scanf("%s",emp[i].date);
+printf("\n\t\t\t Month : ");
+scanf("%s",emp[i].month);
+printf("\n\t\t\t Employee Id : ");
+scanf("%d",&emp[i].ID);
+printf("\n\t\t\t working Hours : ");
+scanf("%d",&emp[i].hour);
+printf("\n\t\t\t Salary per hour : ");
+scanf("%lf",&emp[i].v);
+emp[i].salary=emp[i].v*emp[i].hour;
+if(emp[i].salary<=10000)
+{
+    printf("\n\t\t\t No Tax");
+}
+else if(emp[i].salary>10000 && emp[i].salary<=100000)
+{
+    emp[i].Tax=emp[i].salary*0.10;
+    printf("\n\t\t\t Tax = %.2lf\n",emp[i].Tax);
+}
+else if(emp[i].salary>100000 && emp[i].salary<=1000000)
+{
+    emp[i].Tax=emp[i].salary*0.25;
+    printf("\n\t\t\t Tax = %.2lf\n",emp[i].Tax);
+}
+else 
+{
+    emp[i].Tax=emp[i].salary*0.35;
+    printf("\n\t\t\t Tax = %.2lf\n",emp[i].Tax);
+}
+}
+header();
+for(int i=0;i<n;i++)
+{
+printf("\n\t\t\t--------------------------------------------------------------------\n");
+printf("\n\t\t\tDate : %s",emp[i].date);
+printf("\n\t\t\tMonth : %s",emp[i].month);
+printf("\n\t\t\tEmployee ID : %d",emp[i].ID);
+printf("\n\t\t\tSalary : %.2lf",emp[i].salary);
+printf("\n\t\t\tTax : %.2lf",emp[i].Tax);
+}
+printf("\n\t\t\t----------------------------------------------------------------------\n");
+printf("\n\t\t\t\t ******** Thank You ********");
+getch();
+}
